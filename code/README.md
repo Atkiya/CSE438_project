@@ -10,4 +10,4 @@ This resolution gap may also make the pHash leakage check (Section 5.2) less sen
 864 duplicate groups / 1,255 redundant exact-copy files were found via MD5 hashing across the full dataset. The notebook separates these into:
 
 duplicates that stay within the same class and split (harmless redundancy), vs.
-duplicates that span different classes or different splits (a labeling error or direct leakage risk) — see the cross-class/cross-split warning block in Section 7 for the actionable subset.
+duplicates that span different classes or different splits (a labeling error or direct leakage risk) 
