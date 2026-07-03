@@ -1,22 +1,4 @@
-# AgriHGT: Heterogeneous Graph Transformer for Cross-Crop Plant Disease Diagnosis
 
-**AgriHGT** is a novel deep learning framework that reformulates plant disease diagnosis. Instead of treating images as isolated instances, AgriHGT utilizes a **Heterogeneous Graph Transformer** architecture to jointly model **crop types, disease species, and visual image features** within a single, interconnected graph structure. This allows the model to perform relational reasoning across completely different host plants.
-
----
-
-## 📌 Project Overview
-
-Traditional computer vision models for agriculture classify plant diseases on a rigid, per-image basis. They fail to exploit structural commonalities—such as the fact that *Powdery Mildew* looks strikingly similar whether it manifests on a tomato leaf or a cucumber leaf.
-
-AgriHGT bridges this gap by mapping features to a heterogeneous graph network, unlocking:
-
-* **Cross-Crop Relational Learning:** Shares symptom insights across disparate botanical species.
-* **Few-Shot Transferability:** Improves diagnostic accuracy on rare diseases by leveraging structural knowledge from data-rich crops.
-* **Context-Aware Embeddings:** Employs multi-head attention over heterogeneous node edges (e.g., `Crop-to-Disease`, `Image-to-Crop`).
-
----
-
-## 📊 Literature Review & Benchmarking
 
 The table below outlines the current state-of-the-art (SOTA) in plant disease classification, tracing the transition from standard CNNs to localized Graph Neural Networks, and highlighting where AgriHGT builds upon existing limitations.
 
@@ -42,62 +24,3 @@ The table below outlines the current state-of-the-art (SOTA) in plant disease cl
 | 18 | Lin et al. | 2023 | Cassava, IP102, etc. | GPA-Net (Pyramid GNN) | 99% / 97% / 56.9% | Relationships confined to spatial regions *within* an image. |
 | 19 | Kalpana et al. | 2025 | PlantVillage | U-Net + Swin-V2 + CoAtNet | 99.31% | High computational complexity; lacks explicit relational tracking. |
 
----
-
-## 🔍 The Research Gap
-
-> **The Structural Bottleneck:** Across all 18 domain-specific agricultural studies (rows 2–19), plant disease diagnosis is treated as an isolated classification event. Where graph structures do exist, they are strictly locked down to spatial pixel regions within a single image, a single crop type, or limited species groups.
-
-**AgriHGT** directly addresses this shortfall. By mapping multi-spectral visual tokens, botanical taxonomies, and disease characteristics into a unified heterogeneous graph entity, the architecture natively shares features across arbitrary plant boundaries.
-
----
-
-## 🛠️ Getting Started
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/AgriHGT.git
-cd AgriHGT
-
-```
-
-
-2. Set up a virtual environment and install dependencies:
-```bash
-pip install -r requirements.txt
-
-```
-
-
-*(Note: Ensure you have `torch-geometric` and `torch-sparse` installed matching your local CUDA version).*
-
-### Data Directory Structure
-
-To construct the heterogeneous graph, organize your dataset folders as follows:
-
-```text
-data/
-├── images/
-│   ├── tomato_late_blight_01.jpg
-│   └── potato_late_blight_03.jpg
-├── metadata.csv          # Maps image paths to Crop and Disease IDs
-└── graph_config.json     # Node types, edge metadata, and baseline hyper-parameters
-
-```
-
-### Quick Start (Training)
-
-To initiate feature extraction and build the heterogeneous graph for training, run:
-
-```bash
-python train.py --config config/default_hgt.json --epochs 100 --lr 0.0005
-
-```
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](https://www.google.com/search?q=LICENSE) file for more details.
